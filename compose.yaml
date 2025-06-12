@@ -2,9 +2,9 @@ services:
   mysql:
     image: 'mysql:latest'
     environment:
-      - 'MYSQL_DATABASE=mydatabase'
-      - 'MYSQL_PASSWORD=secret'
-      - 'MYSQL_ROOT_PASSWORD=verysecret'
-      - 'MYSQL_USER=myuser'
+      - 'MYSQL_DATABASE=felbel-checkwriter'
+      - 'MYSQL_PASSWORD=felbel@alupay'
+      - 'MYSQL_ROOT_PASSWORD=admin-felbel@alupay'
+      - 'MYSQL_USER=felbel'
     ports:
       - '3306'
