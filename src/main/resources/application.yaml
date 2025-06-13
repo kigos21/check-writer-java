@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: Check Writer
+  
+  datasource:
+    url: jdbc:mysql://localhost:3306/felbel-checkwriter
+    username: felbel
+    password: felbel@alupay
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
