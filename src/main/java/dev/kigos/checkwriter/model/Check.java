@@ -6,6 +6,9 @@ import java.time.Instant;
 import dev.kigos.checkwriter.util.NanoIdGenerator;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -20,11 +23,19 @@ public class Check extends BaseEntity {
   @Column(name = "payer_id", nullable = false)
   private String payerId;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "payer_id", insertable = false, updatable = false)
+  private Payer payer;
+
   @Column(name = "date", nullable = false)
   private Instant date;
 
   @Column(name = "payee_id", nullable = false)
   private String payeeId;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "payee_id", insertable = false, updatable = false)
+  private Payee payee;
 
   @Column(name = "amount", precision = 12, scale = 2)
   private BigDecimal amount;

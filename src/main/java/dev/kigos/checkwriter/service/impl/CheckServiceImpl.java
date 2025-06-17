@@ -1,5 +1,7 @@
 package dev.kigos.checkwriter.service.impl;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import dev.kigos.checkwriter.dto.CheckDto;
@@ -24,6 +26,12 @@ public class CheckServiceImpl implements CheckService {
   public CheckDto createCheck(CreateCheckDto createCheckDto) {
     Check newCheck = checkDtoMapper.toEntity(createCheckDto);
     return checkDtoMapper.toDto(checkRepository.save(newCheck));
+  }
+
+  @Override
+  public Page<CheckDto> findAll(Pageable pageable) {
+    Page<Check> checkPage = checkRepository.findAllWithPayerAndPayee(pageable);
+    return checkPage.map(check -> checkDtoMapper.toDtoWithPayee(check));
   }
 
 }
