@@ -8,30 +8,30 @@ import dev.kigos.checkwriter.model.Payee;
 @Component
 public class PayeeDtoMapper {
 
-  public Payee toEntity(PayeeDto payeeDto) {
-    if (payeeDto == null) {
+  public Payee toEntity(PayeeDto dto) {
+    if (dto == null) {
       return null;
     }
 
-    Payee payee = new Payee();
-    payee.setId(payeeDto.getId());
-    payee.setCreatedAt(payeeDto.getCreatedAt());
-    payee.setUpdatedAt(payeeDto.getUpdatedAt());
-    payee.setName(payeeDto.getName());
-    return payee;
+    Payee ent = new Payee();
+    ent.setId(dto.getId());
+    ent.setCreatedAt(dto.getCreatedAt());
+    ent.setUpdatedAt(dto.getUpdatedAt());
+    ent.setName(dto.getName());
+    return ent;
   }
 
-  public PayeeDto toDto(Payee payee) {
-    if (payee == null) {
+  public PayeeDto toDto(Payee ent) {
+    if (ent == null) {
       return null;
     }
 
-    PayeeDto payeeDto = new PayeeDto();
-    payeeDto.setId(payee.getId());
-    payeeDto.setCreatedAt(payee.getCreatedAt());
-    payeeDto.setUpdatedAt(payee.getUpdatedAt());
-    payeeDto.setName(payee.getName());
-    return payeeDto;
+    PayeeDto dto = new PayeeDto();
+    dto.setId(ent.getId());
+    dto.setCreatedAt(ent.getCreatedAt());
+    dto.setUpdatedAt(ent.getUpdatedAt());
+    dto.setName(ent.getName());
+    return dto;
   }
 
 }

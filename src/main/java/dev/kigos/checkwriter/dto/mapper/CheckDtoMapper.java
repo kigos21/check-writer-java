@@ -3,7 +3,7 @@ package dev.kigos.checkwriter.dto.mapper;
 import org.springframework.stereotype.Component;
 
 import dev.kigos.checkwriter.dto.CheckDto;
-import dev.kigos.checkwriter.dto.request.CreateCheckDto;
+import dev.kigos.checkwriter.dto.request.CheckRequestDto;
 import dev.kigos.checkwriter.model.Check;
 
 @Component
@@ -17,65 +17,64 @@ public class CheckDtoMapper {
     this.payeeDtoMapper = payeeDtoMapper;
   }
 
-  public Check toEntity(CreateCheckDto createCheckDto) {
-    if (createCheckDto == null) {
+  public Check toEntity(CheckRequestDto dto) {
+    if (dto == null) {
       return null;
     }
 
-    Check check = new Check();
-    check.setPayerId(createCheckDto.getPayerId());
-    check.setPayeeId(createCheckDto.getPayeeId());
-    check.setDate(createCheckDto.getDate());
-    check.setAmount(createCheckDto.getAmount());
-    return check;
+    Check ent = new Check();
+    ent.setPayerId(dto.getPayerId());
+    ent.setPayeeId(dto.getPayeeId());
+    ent.setDate(dto.getDate());
+    ent.setAmount(dto.getAmount());
+    return ent;
   }
 
-  public CheckDto toDto(Check check) {
-    if (check == null) {
+  public CheckDto toDto(Check ent) {
+    if (ent == null) {
       return null;
     }
 
-    CheckDto checkDto = new CheckDto();
-    checkDto.setId(check.getId());
-    checkDto.setCreatedAt(check.getCreatedAt());
-    checkDto.setUpdatedAt(check.getUpdatedAt());
-    checkDto.setPayerId(check.getPayerId());
-    checkDto.setPayeeId(check.getPayeeId());
-    // checkDto.setPayee(payeeDtoMapper.toDto(check.getPayee()));
-    checkDto.setDate(check.getDate());
-    checkDto.setAmount(check.getAmount());
-    return checkDto;
+    CheckDto dto = new CheckDto();
+    dto.setId(ent.getId());
+    dto.setCreatedAt(ent.getCreatedAt());
+    dto.setUpdatedAt(ent.getUpdatedAt());
+    dto.setPayerId(ent.getPayerId());
+    dto.setPayeeId(ent.getPayeeId());
+    dto.setDate(ent.getDate());
+    dto.setAmount(ent.getAmount());
+    return dto;
   }
 
-  public CheckDto toDtoWithPayee(Check check) {
-    if (check == null) {
+  public CheckDto toDtoWithPayee(Check ent) {
+    if (ent == null) {
       return null;
     }
 
-    CheckDto checkDto = this.toDto(check);
-    checkDto.setPayee(payeeDtoMapper.toDto(check.getPayee()));
-    return checkDto;
+    CheckDto dto = this.toDto(ent);
+    dto.setPayee(payeeDtoMapper.toDto(ent.getPayee()));
+    return dto;
   }
 
-  public CheckDto toDtoWithPayer(Check check) {
-    if (check == null) {
+  public CheckDto toDtoWithPayer(Check ent) {
+    if (ent == null) {
       return null;
     }
 
-    CheckDto checkDto = this.toDto(check);
-    checkDto.setPayer(payerDtoMapper.toDto(check.getPayer()));
-    return checkDto;
+    CheckDto dto = this.toDto(ent);
+    dto.setPayer(payerDtoMapper.toDto(ent.getPayer()));
+    return dto;
   }
 
-  public CheckDto toDtoWithPayerAndPayee(Check check) {
-    if (check == null) {
+  public CheckDto toDtoWithPayerAndPayee(Check ent) {
+    if (ent == null) {
       return null;
     }
 
-    CheckDto checkDto = this.toDto(check);
-    checkDto.setPayee(payeeDtoMapper.toDto(check.getPayee()));
-    checkDto.setPayer(payerDtoMapper.toDto(check.getPayer()));
-    return checkDto;
+    CheckDto dto = this.toDto(ent);
+    dto.setPayee(payeeDtoMapper.toDto(ent.getPayee()));
+    dto.setPayer(payerDtoMapper.toDto(ent.getPayer()));
+    return dto;
   }
 
 }

@@ -4,10 +4,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import dev.kigos.checkwriter.dto.CheckDto;
-import dev.kigos.checkwriter.dto.request.CreateCheckDto;
+import dev.kigos.checkwriter.dto.request.CheckRequestDto;
 
 public interface CheckService {
-  CheckDto createCheck(CreateCheckDto checkCreateDto);
+  CheckDto createCheck(CheckRequestDto checkRequestDto);
 
-  Page<CheckDto> findAll(String payeeName, Pageable pageable);
+  Page<CheckDto> getChecks(String payeeName, Pageable pageable);
+
+  CheckDto getCheckById(String checkId);
+
+  CheckDto updateCheck(String checkId, CheckRequestDto checkRequestDto);
+
+  CheckDto deleteCheck(String checkId);
+
 }

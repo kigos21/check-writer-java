@@ -8,32 +8,32 @@ import dev.kigos.checkwriter.model.Payer;
 @Component
 public class PayerDtoMapper {
 
-  public Payer toEntity(PayerDto payerDto) {
-    if (payerDto == null) {
+  public Payer toEntity(PayerDto dto) {
+    if (dto == null) {
       return null;
     }
 
-    Payer payer = new Payer();
-    payer.setId(payerDto.getId());
-    payer.setCreatedAt(payerDto.getCreatedAt());
-    payer.setUpdatedAt(payerDto.getUpdatedAt());
-    payer.setName(payerDto.getName());
-    payer.setNotes(payerDto.getNotes());
-    return payer;
+    Payer ent = new Payer();
+    ent.setId(dto.getId());
+    ent.setCreatedAt(dto.getCreatedAt());
+    ent.setUpdatedAt(dto.getUpdatedAt());
+    ent.setName(dto.getName());
+    ent.setNotes(dto.getNotes());
+    return ent;
   }
 
-  public PayerDto toDto(Payer payer) {
-    if (payer == null) {
+  public PayerDto toDto(Payer ent) {
+    if (ent == null) {
       return null;
     }
 
-    PayerDto payerDto = new PayerDto();
-    payerDto.setId(payer.getId());
-    payerDto.setCreatedAt(payer.getCreatedAt());
-    payerDto.setUpdatedAt(payer.getUpdatedAt());
-    payerDto.setName(payer.getName());
-    payerDto.setNotes(payer.getNotes());
-    return payerDto;
+    PayerDto dto = new PayerDto();
+    dto.setId(ent.getId());
+    dto.setCreatedAt(ent.getCreatedAt());
+    dto.setUpdatedAt(ent.getUpdatedAt());
+    dto.setName(ent.getName());
+    dto.setNotes(ent.getNotes());
+    return dto;
   }
 
 }
