@@ -44,7 +44,7 @@ public class CheckController {
       @RequestParam(name = "asc", defaultValue = "false") boolean ascending) {
     Sort sort = ascending ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
     Pageable pageable = PageRequest.of(page, size, sort);
-    ApiResponse<Page<CheckDto>> response = new ApiResponse<>(checkService.findAll(pageable));
+    ApiResponse<Page<CheckDto>> response = new ApiResponse<>(checkService.findAll(query, pageable));
     return ResponseEntity.ok().body(response);
   }
 

@@ -29,8 +29,8 @@ public class CheckServiceImpl implements CheckService {
   }
 
   @Override
-  public Page<CheckDto> findAll(Pageable pageable) {
-    Page<Check> checkPage = checkRepository.findAllWithPayerAndPayee(pageable);
+  public Page<CheckDto> findAll(String payeeName, Pageable pageable) {
+    Page<Check> checkPage = checkRepository.findAllWithPayee(payeeName, pageable);
     return checkPage.map(check -> checkDtoMapper.toDtoWithPayee(check));
   }
 

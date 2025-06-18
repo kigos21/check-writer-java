@@ -9,5 +9,5 @@ import dev.kigos.checkwriter.dto.request.CreateCheckDto;
 public interface CheckService {
   CheckDto createCheck(CreateCheckDto checkCreateDto);
 
-  Page<CheckDto> findAll(Pageable pageable);
+  Page<CheckDto> findAll(String payeeName, Pageable pageable);
 }
