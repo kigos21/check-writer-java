@@ -1,23 +1,12 @@
 package dev.kigos.checkwriter.dto.mapper;
 
-import org.springframework.stereotype.Component;
-
 import dev.kigos.checkwriter.dto.CheckDto;
 import dev.kigos.checkwriter.dto.request.CheckRequestDto;
 import dev.kigos.checkwriter.model.Check;
 
-@Component
 public class CheckDtoMapper {
 
-  private final PayerDtoMapper payerDtoMapper;
-  private final PayeeDtoMapper payeeDtoMapper;
-
-  public CheckDtoMapper(PayerDtoMapper payerDtoMapper, PayeeDtoMapper payeeDtoMapper) {
-    this.payerDtoMapper = payerDtoMapper;
-    this.payeeDtoMapper = payeeDtoMapper;
-  }
-
-  public Check toEntity(CheckRequestDto dto) {
+  public static Check toEntity(CheckRequestDto dto) {
     if (dto == null) {
       return null;
     }
@@ -30,7 +19,7 @@ public class CheckDtoMapper {
     return ent;
   }
 
-  public CheckDto toDto(Check ent) {
+  public static CheckDto toDto(Check ent) {
     if (ent == null) {
       return null;
     }
@@ -46,34 +35,34 @@ public class CheckDtoMapper {
     return dto;
   }
 
-  public CheckDto toDtoWithPayee(Check ent) {
+  public static CheckDto toDtoWithPayee(Check ent) {
     if (ent == null) {
       return null;
     }
 
-    CheckDto dto = this.toDto(ent);
-    dto.setPayee(payeeDtoMapper.toDto(ent.getPayee()));
+    CheckDto dto = toDto(ent);
+    dto.setPayee(PayeeDtoMapper.toDto(ent.getPayee()));
     return dto;
   }
 
-  public CheckDto toDtoWithPayer(Check ent) {
+  public static CheckDto toDtoWithPayer(Check ent) {
     if (ent == null) {
       return null;
     }
 
-    CheckDto dto = this.toDto(ent);
-    dto.setPayer(payerDtoMapper.toDto(ent.getPayer()));
+    CheckDto dto = toDto(ent);
+    dto.setPayer(PayerDtoMapper.toDto(ent.getPayer()));
     return dto;
   }
 
-  public CheckDto toDtoWithPayerAndPayee(Check ent) {
+  public static CheckDto toDtoWithPayerAndPayee(Check ent) {
     if (ent == null) {
       return null;
     }
 
-    CheckDto dto = this.toDto(ent);
-    dto.setPayee(payeeDtoMapper.toDto(ent.getPayee()));
-    dto.setPayer(payerDtoMapper.toDto(ent.getPayer()));
+    CheckDto dto = toDto(ent);
+    dto.setPayee(PayeeDtoMapper.toDto(ent.getPayee()));
+    dto.setPayer(PayerDtoMapper.toDto(ent.getPayer()));
     return dto;
   }
 

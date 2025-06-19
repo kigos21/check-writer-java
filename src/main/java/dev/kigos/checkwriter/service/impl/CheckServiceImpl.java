@@ -15,31 +15,29 @@ import jakarta.persistence.EntityNotFoundException;
 @Service
 public class CheckServiceImpl implements CheckService {
 
-  private final CheckDtoMapper checkDtoMapper;
   private final CheckRepository checkRepository;
 
-  public CheckServiceImpl(CheckDtoMapper checkDtoMapper, CheckRepository checkRepository) {
-    this.checkDtoMapper = checkDtoMapper;
+  public CheckServiceImpl(CheckRepository checkRepository) {
     this.checkRepository = checkRepository;
   }
 
   @Override
   public CheckDto createCheck(CheckRequestDto checkRequestDto) {
-    Check newCheck = checkDtoMapper.toEntity(checkRequestDto);
-    return checkDtoMapper.toDto(checkRepository.save(newCheck));
+    Check newCheck = CheckDtoMapper.toEntity(checkRequestDto);
+    return CheckDtoMapper.toDto(checkRepository.save(newCheck));
   }
 
   @Override
   public Page<CheckDto> getChecks(String payeeName, Pageable pageable) {
     Page<Check> checkPage = checkRepository.findAllWithPayee(payeeName, pageable);
-    return checkPage.map(check -> checkDtoMapper.toDtoWithPayee(check));
+    return checkPage.map(check -> CheckDtoMapper.toDtoWithPayee(check));
   }
 
   @Override
   public CheckDto getCheckById(String checkId) {
     Check check = checkRepository.findById(checkId)
         .orElseThrow(() -> new EntityNotFoundException("Check with id " + checkId + " not found"));
-    return checkDtoMapper.toDtoWithPayerAndPayee(check);
+    return CheckDtoMapper.toDtoWithPayerAndPayee(check);
   }
 
   @Override
@@ -51,7 +49,7 @@ public class CheckServiceImpl implements CheckService {
     check.setAmount(checkRequestDto.getAmount());
     check.setPayerId(checkRequestDto.getPayerId());
     check = checkRepository.save(check);
-    return checkDtoMapper.toDto(check);
+    return CheckDtoMapper.toDto(check);
   }
 
   @Override
@@ -59,7 +57,7 @@ public class CheckServiceImpl implements CheckService {
     Check check = checkRepository.findById(checkId)
         .orElseThrow(() -> new EntityNotFoundException("Check with id " + checkId + " not found"));
     checkRepository.delete(check);
-    return checkDtoMapper.toDto(check);
+    return CheckDtoMapper.toDto(check);
   }
 
 }

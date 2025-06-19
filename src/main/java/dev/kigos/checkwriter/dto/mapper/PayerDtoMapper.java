@@ -1,14 +1,11 @@
 package dev.kigos.checkwriter.dto.mapper;
 
-import org.springframework.stereotype.Component;
-
 import dev.kigos.checkwriter.dto.PayerDto;
 import dev.kigos.checkwriter.model.Payer;
 
-@Component
 public class PayerDtoMapper {
 
-  public Payer toEntity(PayerDto dto) {
+  public static Payer toEntity(PayerDto dto) {
     if (dto == null) {
       return null;
     }
@@ -22,7 +19,7 @@ public class PayerDtoMapper {
     return ent;
   }
 
-  public PayerDto toDto(Payer ent) {
+  public static PayerDto toDto(Payer ent) {
     if (ent == null) {
       return null;
     }

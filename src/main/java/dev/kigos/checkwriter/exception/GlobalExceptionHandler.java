@@ -50,11 +50,19 @@ public class GlobalExceptionHandler {
     return ResponseEntity.badRequest().body(errorResponse);
   }
 
-  @ExceptionHandler
+  @ExceptionHandler(EntityNotFoundException.class)
   public ResponseEntity<ErrorResponse> handleEntityNotFoundException(EntityNotFoundException exception) {
 
     log.error(exception.getMessage());
     ErrorResponse errorResponse = new ErrorResponse(exception.getMessage());
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+  }
+
+  @ExceptionHandler(EntityInUseException.class)
+  public ResponseEntity<ErrorResponse> handleEntityInUseException(EntityInUseException exception) {
+
+    log.error(exception.getMessage());
+    ErrorResponse errorResponse = new ErrorResponse(exception.getMessage());
+    return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
   }
 }

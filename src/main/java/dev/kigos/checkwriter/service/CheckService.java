@@ -7,6 +7,7 @@ import dev.kigos.checkwriter.dto.CheckDto;
 import dev.kigos.checkwriter.dto.request.CheckRequestDto;
 
 public interface CheckService {
+
   CheckDto createCheck(CheckRequestDto checkRequestDto);
 
   Page<CheckDto> getChecks(String payeeName, Pageable pageable);
