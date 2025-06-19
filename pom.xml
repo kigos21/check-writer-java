@@ -90,6 +90,11 @@
 			<artifactId>jnanoid-enhanced</artifactId>
 			<version>main-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>net.datafaker</groupId>
+			<artifactId>datafaker</artifactId>
+    <version>2.4.2</version>
+</dependency>
 	</dependencies>
 
 	<build>
