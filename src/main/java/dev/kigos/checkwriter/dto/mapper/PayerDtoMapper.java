@@ -1,19 +1,17 @@
 package dev.kigos.checkwriter.dto.mapper;
 
 import dev.kigos.checkwriter.dto.PayerDto;
+import dev.kigos.checkwriter.dto.request.PayerRequestDto;
 import dev.kigos.checkwriter.model.Payer;
 
 public class PayerDtoMapper {
 
-  public static Payer toEntity(PayerDto dto) {
+  public static Payer toEntity(PayerRequestDto dto) {
     if (dto == null) {
       return null;
     }
 
     Payer ent = new Payer();
-    ent.setId(dto.getId());
-    ent.setCreatedAt(dto.getCreatedAt());
-    ent.setUpdatedAt(dto.getUpdatedAt());
     ent.setName(dto.getName());
     ent.setNotes(dto.getNotes());
     return ent;

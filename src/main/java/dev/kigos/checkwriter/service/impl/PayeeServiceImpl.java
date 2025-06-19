@@ -27,7 +27,7 @@ public class PayeeServiceImpl implements PayeeService {
   @Override
   public PayeeDto createPayee(PayeeRequestDto payeeRequestDto) {
     Payee payee = PayeeDtoMapper.toEntity(payeeRequestDto);
-    payeeRepository.save(payee);
+    payee = payeeRepository.save(payee);
     return PayeeDtoMapper.toDto(payee);
   }
 
