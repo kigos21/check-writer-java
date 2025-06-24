@@ -22,8 +22,8 @@ public class CheckRequestDto {
   @DecimalMin(value = "0.01", message = "Amount must be greater than 0")
   private BigDecimal amount;
 
-  @NotNull(message = "Payer is required")
-  @NotBlank(message = "Payer must not be blank")
+  // @NotNull(message = "Payer is required")
+  // @NotBlank(message = "Payer must not be blank")
   private String payerId;
 
 }
