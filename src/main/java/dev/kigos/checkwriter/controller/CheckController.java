@@ -61,7 +61,7 @@ public class CheckController {
   }
 
   @PutMapping("/{checkId}")
-  public ResponseEntity<ApiResponse<CheckDto>> getCheckById(@PathVariable String checkId,
+  public ResponseEntity<ApiResponse<CheckDto>> deleteCheckById(@PathVariable String checkId,
       @Valid @RequestBody CheckRequestDto checkRequestDto) {
 
     CheckDto check = checkService.updateCheck(checkId, checkRequestDto);

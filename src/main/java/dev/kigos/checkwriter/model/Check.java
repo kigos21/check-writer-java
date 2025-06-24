@@ -20,7 +20,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class Check extends BaseEntity {
 
-  @Column(name = "payer_id", nullable = false)
+  @Column(name = "payer_id")
   private String payerId;
 
   @ManyToOne(fetch = FetchType.LAZY)
